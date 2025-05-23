@@ -277,8 +277,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="photo-placeholder" src="1715534813916.jpg">
-               
+            <div class="photo-placeholder">
+               <img src="src="1715534813916.jpg" alt="Profile Photo" width="200">
             </div>
             <div class="name">YOUSSEF LIBZAR</div>
             <div class="title">Consultant Fonctionnel ERP | Spécialiste SAP & Systèmes d'Entreprise</div>
