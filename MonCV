@@ -567,7 +567,8 @@
         <!-- Header Section -->
         <header class="header fade-in">
             <div class="profile-image">
-                YL
+                <img src="1715534813916.jpg" alt="Profile Photo" width="200">
+
             </div>
             <h1 class="name">YOUSSEF LIBZAR</h1>
             <p class="title">Consultant Fonctionnel ERP | Spécialiste ERP & Systèmes d'Entreprise</p>
