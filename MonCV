@@ -285,7 +285,7 @@
             <div class="contact-info">
                 <div class="contact-item">📧 josef.libzar@gmail.com</div>
                 <div class="contact-item">📱 +212 643 941 291</div>
-                <div href ="https://www.linkedin.com/in/youssef-libzar-502494228/" class="contact-item">🔗 Profil LinkedIn</div>
+                <div class="contact-item">🔗  <a href ="https://www.linkedin.com/in/youssef-libzar-502494228/">Profil LinkedIn</a>Profil LinkedIn</a></div>
                 <div class="contact-item">📍 Rabat, Maroc</div>
             </div>
             <div style="margin-top: 15px; font-weight: 600; background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 20px; display: inline-block;">
