@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youssef LIBZAR - Consultant Fonctionnel ERP</title>
+    <title>Youssef LIBZAR - ERP Functional Consultant</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -22,6 +22,7 @@
             --white: #ffffff;
             --glass: rgba(255, 255, 255, 0.1);
             --shadow: rgba(0, 123, 255, 0.2);
+            --animation-speed: 0.3s;
         }
 
         body {
@@ -32,7 +33,7 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
+        /* Simplified background for mobile performance */
         body::before {
             content: '';
             position: fixed;
@@ -41,16 +42,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 20%, rgba(0, 123, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(0, 255, 179, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 20% 20%, rgba(0, 123, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
             z-index: -1;
-            animation: backgroundPulse 8s ease-in-out infinite;
-        }
-
-        @keyframes backgroundPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
         }
 
         /* Container */
@@ -63,9 +57,9 @@
         /* Header Section */
         .header {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             position: relative;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .header::before {
@@ -77,75 +71,44 @@
             width: 200px;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--electric-blue), transparent);
-            animation: headerGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes headerGlow {
-            0%, 100% { width: 200px; opacity: 1; }
-            50% { width: 400px; opacity: 0.6; }
         }
 
         .profile-image {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            margin: 0 auto 30px;
+            margin: 0 auto 20px;
             background: linear-gradient(45deg, var(--primary-blue), var(--electric-blue));
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 600;
-            box-shadow: 
-                0 0 30px var(--shadow),
-                inset 0 0 30px rgba(255, 255, 255, 0.1);
-            animation: profileFloat 6s ease-in-out infinite;
+            box-shadow: 0 0 20px var(--shadow);
             position: relative;
             overflow: hidden;
         }
 
-        .profile-image::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            animation: shimmer 3s linear infinite;
-        }
-
-        @keyframes profileFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-10px) rotate(1deg); }
-            75% { transform: translateY(10px) rotate(-1deg); }
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .name {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 800;
             background: linear-gradient(45deg, var(--primary-blue), var(--electric-blue), var(--neon-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 2px;
-            animation: titleGlow 2s ease-in-out infinite alternate;
-            text-shadow: 0 0 2px var(--shadow);
-        }
-
-        @keyframes titleGlow {
-            0% { filter: brightness(1) drop-shadow(0 0 5px var(--primary-blue)); }
-            100% { filter: brightness(1.2) drop-shadow(0 0 15px var(--electric-blue)); }
+            margin-bottom: 10px;
         }
 
         .title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--primary-blue);
             font-weight: 500;
             margin-bottom: 20px;
@@ -164,31 +127,28 @@
             padding: 15px;
             border-radius: 15px;
             border: 1px solid rgba(0, 123, 255, 0.2);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            transition: transform var(--animation-speed) ease;
             cursor: pointer;
         }
 
         .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px var(--shadow);
-            border-color: var(--electric-blue);
+            transform: translateY(-3px);
         }
 
         /* Section Styling */
         .section {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             position: relative;
         }
 
         .section-title {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--text-dark);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
         .section-title::before {
@@ -201,47 +161,23 @@
             height: 3px;
             background: linear-gradient(90deg, var(--primary-blue), var(--electric-blue), var(--neon-green));
             border-radius: 2px;
-            animation: titleUnderline 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes titleUnderline {
-            0% { width: 80px; }
-            100% { width: 120px; }
         }
 
         /* Card System */
         .card {
             background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
             border: 1px solid rgba(0, 123, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            transition: all var(--animation-speed) ease;
             position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .card:hover::before {
-            left: 100%;
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 
-                0 20px 40px var(--shadow),
-                0 0 0 1px var(--electric-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow);
         }
 
         /* Skills Grid */
@@ -253,23 +189,22 @@
 
         .skill-card {
             background: linear-gradient(135deg, var(--white) 0%, rgba(0, 123, 255, 0.05) 100%);
-            padding: 25px;
-            border-radius: 15px;
+            padding: 20px;
+            border-radius: 12px;
             border-left: 4px solid var(--primary-blue);
-            transition: all 0.3s ease;
+            transition: all var(--animation-speed) ease;
         }
 
         .skill-card:hover {
             border-left-color: var(--neon-green);
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px var(--shadow);
+            transform: translateX(5px);
         }
 
         .skill-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .skill-list {
@@ -280,7 +215,7 @@
         /* Experience Cards */
         .experience-card {
             position: relative;
-            padding-left: 30px;
+            padding-left: 25px;
         }
 
         .experience-card::before {
@@ -295,11 +230,11 @@
         }
 
         .job-header {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .job-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 5px;
@@ -323,10 +258,10 @@
         }
 
         .achievements li {
-            margin-bottom: 12px;
-            padding-left: 25px;
+            margin-bottom: 10px;
+            padding-left: 20px;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all var(--animation-speed) ease;
         }
 
         .achievements li::before {
@@ -335,138 +270,90 @@
             left: 0;
             color: var(--neon-green);
             font-size: 0.8rem;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.1); }
         }
 
         .achievements li:hover {
-            transform: translateX(10px);
+            transform: translateX(5px);
             color: var(--primary-blue);
         }
 
         /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
         .project-card {
             background: linear-gradient(135deg, var(--primary-blue), var(--electric-blue));
             color: white;
-            padding: 30px;
-            border-radius: 20px;
+            padding: 25px;
+            border-radius: 15px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
-        }
-
-        .project-card:hover::before {
-            animation: projectShimmer 1s ease-in-out;
-        }
-
-        @keyframes projectShimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            transition: all var(--animation-speed) ease;
         }
 
         .project-card:hover {
-            transform: translateY(-15px) rotateY(5deg);
-            box-shadow: 0 25px 50px rgba(0, 123, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 123, 255, 0.3);
         }
 
         .project-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            font-size: 2.5rem;
+            margin-bottom: 15px;
         }
 
         /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, var(--text-dark), var(--primary-blue));
             color: white;
-            padding: 50px 30px;
-            border-radius: 25px;
+            padding: 40px 25px;
+            border-radius: 20px;
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(0, 255, 179, 0.1), transparent);
-            animation: ctaGlow 4s ease-in-out infinite;
-        }
-
-        @keyframes ctaGlow {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
         }
 
         .cta-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(0, 255, 179, 0.5);
         }
 
         .cta-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
         }
 
         .cta-item {
-            padding: 20px;
+            padding: 15px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
             border: 1px solid rgba(0, 255, 179, 0.2);
-            transition: all 0.3s ease;
+            transition: all var(--animation-speed) ease;
         }
 
         .cta-item:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
             border-color: var(--neon-green);
-            box-shadow: 0 0 30px rgba(0, 255, 179, 0.3);
         }
 
-        /* Mobile Responsiveness */
+        /* Mobile Responsiveness - Optimized */
         @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
             .name {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
 
             .card {
@@ -474,11 +361,12 @@
             }
 
             .header {
-                padding: 40px 10px;
+                padding: 30px 15px;
             }
 
             .contact-grid {
                 grid-template-columns: 1fr;
+                gap: 10px;
             }
 
             .skills-grid,
@@ -487,11 +375,30 @@
             }
 
             .cta-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .cta-grid {
                 grid-template-columns: 1fr;
+            }
+
+            /* Reduce animations on mobile for performance */
+            .card:hover,
+            .contact-item:hover,
+            .skill-card:hover {
+                transform: none;
+            }
+
+            .achievements li:hover {
+                transform: none;
+            }
+
+            /* Simplify mobile interactions */
+            .card,
+            .contact-item,
+            .skill-card,
+            .project-card {
+                transition: none;
             }
         }
 
@@ -501,24 +408,28 @@
             }
 
             .name {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .profile-image {
-                width: 120px;
-                height: 120px;
-                font-size: 20px;
+                width: 100px;
+                height: 100px;
+                font-size: 18px;
             }
 
             .card {
                 padding: 15px;
             }
+
+            .section {
+                margin-bottom: 30px;
+            }
         }
 
-        /* Scroll Animation */
+        /* Fade-in animation - simplified for mobile */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
             transition: all 0.6s ease;
         }
 
@@ -543,8 +454,8 @@
         }
 
         .loading-spinner {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border: 3px solid rgba(0, 123, 255, 0.3);
             border-top: 3px solid var(--primary-blue);
             border-radius: 50%;
@@ -554,6 +465,18 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile-specific optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            /* Remove hover effects on touch devices */
+            .card:hover,
+            .contact-item:hover,
+            .skill-card:hover,
+            .project-card:hover,
+            .achievements li:hover {
+                transform: none;
+            }
         }
     </style>
 </head>
@@ -567,11 +490,10 @@
         <!-- Header Section -->
         <header class="header fade-in">
             <div class="profile-image">
-                <img src="1715534813916.jpg" alt="Profile Photo" width="200">
-
+                YL
             </div>
             <h1 class="name">YOUSSEF LIBZAR</h1>
-            <p class="title">Consultant Fonctionnel ERP | Spécialiste ERP & Systèmes d'Entreprise</p>
+            <p class="title">ERP Functional Consultant | ERP & Enterprise Systems Specialist</p>
             
             <div class="contact-grid">
                 <div class="contact-item">
@@ -579,145 +501,145 @@
                     josef.libzar@gmail.com
                 </div>
                 <div class="contact-item">
-                    <strong>📱 Téléphone</strong><br>
+                    <strong>📱 Phone</strong><br>
                     +212 643 941 291
                 </div>
                 <div class="contact-item">
                     <strong>🔗 LinkedIn</strong><br>
-                    <a href="https://www.linkedin.com/in/youssef-libzar-502494228/" style="color: var(--primary-blue);">Profil LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/youssef-libzar-502494228/" style="color: var(--primary-blue);">LinkedIn Profile</a>
                 </div>
                 <div class="contact-item">
-                    <strong>📍 Localisation</strong><br>
-                    Rabat, Maroc
+                    <strong>📍 Location</strong><br>
+                    Rabat, Morocco
                 </div>
             </div>
 
             <div class="contact-item" style="margin-top: 20px; background: linear-gradient(135deg, var(--neon-green), var(--electric-blue)); color: white; font-weight: 600;">
-                🇪🇺 Recherche opportunités UE avec sponsoring visa
+                🇪🇺 Seeking EU opportunities with visa sponsorship
             </div>
         </header>
 
         <!-- Profile Summary -->
         <section class="section fade-in">
-            <h2 class="section-title">Profil Professionnel</h2>
+            <h2 class="section-title">Professional Profile</h2>
             <div class="card">
                 <p style="font-size: 1.1rem; line-height: 1.8;">
-                    <strong>Consultant Fonctionnel ERP</strong> orienté résultats avec <strong>3+ années</strong> d'expérience pratique dans l'implémentation et l'optimisation de systèmes d'entreprise dans les secteurs <strong>RH et Assurance</strong>. Historique prouvé de livraison de projets ERP complexes, réduction des coûts opérationnels, et rationalisation des processus métier pour clients internationaux.
+                    <strong>Results-driven ERP Functional Consultant</strong> with <strong>3+ years</strong> of hands-on experience in implementing and optimizing enterprise systems across <strong>HR and Insurance</strong> sectors. Proven track record of delivering complex ERP projects, reducing operational costs, and streamlining business processes for international clients.
                 </p>
             </div>
         </section>
 
         <!-- Skills Section -->
         <section class="section fade-in">
-            <h2 class="section-title">Compétences Clés</h2>
+            <h2 class="section-title">Key Skills</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3 class="skill-title">🔧 Systèmes ERP</h3>
+                    <h3 class="skill-title">🔧 ERP Systems</h3>
                     <p class="skill-list">SAP, Odoo, TeamsRH, MyTeamsRH, Cleva Web/RCP</p>
                 </div>
                 <div class="skill-card">
-                    <h3 class="skill-title">💻 Développement</h3>
+                    <h3 class="skill-title">💻 Development</h3>
                     <p class="skill-list">Java, Spring Boot, Angular, TypeScript, Python, .NET</p>
                 </div>
                 <div class="skill-card">
-                    <h3 class="skill-title">🗄️ Bases de Données</h3>
+                    <h3 class="skill-title">🗄️ Databases</h3>
                     <p class="skill-list">Oracle, MySQL, SQL, PL/SQL</p>
                 </div>
                 <div class="skill-card">
-                    <h3 class="skill-title">📊 Gestion de Projet</h3>
+                    <h3 class="skill-title">📊 Project Management</h3>
                     <p class="skill-list">Agile, Scrum, Jira, Confluence</p>
                 </div>
                 <div class="skill-card">
-                    <h3 class="skill-title">🌍 Langues</h3>
-                    <p class="skill-list">Français (C1), Anglais (C1), Arabe (Natif)</p>
+                    <h3 class="skill-title">🌍 Languages</h3>
+                    <p class="skill-list">French (C1), English (C1), Arabic (Native)</p>
                 </div>
             </div>
         </section>
 
         <!-- Experience Section -->
         <section class="section fade-in">
-            <h2 class="section-title">Expérience Professionnelle</h2>
+            <h2 class="section-title">Professional Experience</h2>
             
             <div class="card experience-card">
                 <div class="job-header">
-                    <h3 class="job-title">CONSULTANT FONCTIONNEL ERP/ASSURANCE</h3>
-                    <p class="company">Cleva Solutions | Rabat, Maroc</p>
-                    <p class="date-location">Déc 2024 - Présent</p>
+                    <h3 class="job-title">ERP/INSURANCE FUNCTIONAL CONSULTANT</h3>
+                    <p class="company">Cleva Solutions | Rabat, Morocco</p>
+                    <p class="date-location">Dec 2024 - Present</p>
                 </div>
                 <ul class="achievements">
-                    <li><strong>Dirigé la collecte d'exigences</strong> pour clients d'assurance, traduisant les besoins métier en spécifications techniques</li>
-                    <li><strong>Configuré les modules ERP</strong> résultant en une amélioration de l'efficacité du traitement des réclamations</li>
-                    <li><strong>Conçu et livré</strong> des programmes de formation utilisateur pour les utilisateurs finaux</li>
-                    <li><strong>Géré la résolution d'incidents</strong> avec un taux élevé de résolution au premier appel</li>
+                    <li><strong>Led requirements gathering</strong> for insurance clients, translating business needs into technical specifications</li>
+                    <li><strong>Configured ERP modules</strong> resulting in improved claims processing efficiency</li>
+                    <li><strong>Designed and delivered</strong> user training programs for end-users</li>
+                    <li><strong>Managed incident resolution</strong> with high first-call resolution rate</li>
                 </ul>
             </div>
 
             <div class="card experience-card">
                 <div class="job-header">
-                    <h3 class="job-title">CONSULTANT TECHNICO-FONCTIONNEL RH</h3>
-                    <p class="company">Cegedim | Rabat, Maroc</p>
-                    <p class="date-location">Fév 2023 - Déc 2024</p>
+                    <h3 class="job-title">HR TECHNO-FUNCTIONAL CONSULTANT</h3>
+                    <p class="company">Cegedim | Rabat, Morocco</p>
+                    <p class="date-location">Feb 2023 - Dec 2024</p>
                 </div>
                 <ul class="achievements">
-                    <li><strong>Collaboré avec clients internationaux</strong> pour développer les spécifications fonctionnelles</li>
-                    <li><strong>Géré les user stories</strong> en utilisant Jira, assurant la livraison dans les délais</li>
-                    <li><strong>Exécuté des tests complets</strong> avec un taux élevé de détection de bugs</li>
-                    <li><strong>Analysé et résolu</strong> les anomalies fonctionnelles, maintenant la stabilité du système</li>
+                    <li><strong>Collaborated with international clients</strong> to develop functional specifications</li>
+                    <li><strong>Managed user stories</strong> using Jira, ensuring on-time delivery</li>
+                    <li><strong>Executed comprehensive testing</strong> with high bug detection rate</li>
+                    <li><strong>Analyzed and resolved</strong> functional anomalies, maintaining system stability</li>
                 </ul>
             </div>
 
             <div class="card experience-card">
                 <div class="job-header">
-                    <h3 class="job-title">INGÉNIEUR FULL STACK (STAGE)</h3>
-                    <p class="company">Inetum | Rabat, Maroc</p>
-                    <p class="date-location">Avr 2022 - Août 2022</p>
+                    <h3 class="job-title">FULL STACK ENGINEER (INTERNSHIP)</h3>
+                    <p class="company">Inetum | Rabat, Morocco</p>
+                    <p class="date-location">Apr 2022 - Aug 2022</p>
                 </div>
                 <ul class="achievements">
-                    <li><strong>Conçu et développé</strong> une application web de géolocalisation pour la gestion de flottes</li>
-                    <li><strong>Implémenté des APIs RESTful</strong> utilisant Spring Boot avec suivi en temps réel</li>
-                    <li><strong>Construit un frontend responsive</strong> avec Angular, améliorant l'UX</li>
+                    <li><strong>Designed and developed</strong> a geolocation web application for fleet management</li>
+                    <li><strong>Implemented RESTful APIs</strong> using Spring Boot with real-time tracking</li>
+                    <li><strong>Built responsive frontend</strong> with Angular, improving UX</li>
                 </ul>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section class="section fade-in">
-            <h2 class="section-title">Projets Clés & Réalisations</h2>
+            <h2 class="section-title">Key Projects & Achievements</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-icon">🏆</div>
-                    <h3><strong>Succès d'Implémentation ERP</strong></h3>
-                    <p>Dirigé la configuration d'un système ERP d'assurance, réduisant le temps de traitement de 20%</p>
+                    <h3><strong>ERP Implementation Success</strong></h3>
+                    <p>Led insurance ERP system configuration, reducing processing time by 20%</p>
                 </div>
                 <div class="project-card">
                     <div class="project-icon">⚡</div>
-                    <h3><strong>Optimisation de Processus</strong></h3>
-                    <p>Rationalisé les workflows RH pour client international, économisant 15 heures/semaine</p>
+                    <h3><strong>Process Optimization</strong></h3>
+                    <p>Streamlined HR workflows for international client, saving 15 hours/week</p>
                 </div>
                 <div class="project-card">
                     <div class="project-icon">✅</div>
-                    <h3><strong>Assurance Qualité</strong></h3>
-                    <p>Maintenu un taux de précision élevé dans les tests fonctionnels sur applications d'entreprise</p>
+                    <h3><strong>Quality Assurance</strong></h3>
+                    <p>Maintained high accuracy rate in functional testing across enterprise applications</p>
                 </div>
                 <div class="project-card">
                     <div class="project-icon">😊</div>
-                    <h3><strong>Satisfaction Client</strong></h3>
-                    <p>Atteint une excellente satisfaction client grâce à une gestion efficace des parties prenantes</p>
+                    <h3><strong>Client Satisfaction</strong></h3>
+                    <p>Achieved excellent client satisfaction through effective stakeholder management</p>
                 </div>
             </div>
         </section>
 
         <!-- Education -->
         <section class="section fade-in">
-            <h2 class="section-title">Formation</h2>
+            <h2 class="section-title">Education</h2>
             <div class="card experience-card">
                 <div class="job-header">
-                    <h3 class="job-title">DIPLÔME D'INGÉNIEUR - SCIENCES MATHÉMATIQUES & INFORMATIQUES</h3>
-                    <p class="company">Faculté des Sciences et Techniques Mohammedia</p>
+                    <h3 class="job-title">ENGINEERING DEGREE - MATHEMATICAL & COMPUTER SCIENCES</h3>
+                    <p class="company">Faculty of Sciences and Techniques Mohammedia</p>
                     <p class="date-location">2020 - 2023</p>
                 </div>
                 <p style="margin-top: 15px;">
-                    <strong>Mention :</strong> Bien • <strong>Cours Pertinents :</strong> Génie Logiciel, Systèmes de Bases de Données, Gestion de Projet, Analyse de Systèmes
+                    <strong>Grade:</strong> Good • <strong>Relevant Courses:</strong> Software Engineering, Database Systems, Project Management, Systems Analysis
                 </p>
             </div>
         </section>
@@ -726,30 +648,30 @@
         <section class="section fade-in">
             <div class="cta-section">
                 <div class="cta-content">
-                    <h2 class="cta-title">Pourquoi Moi ?</h2>
+                    <h2 class="cta-title">Why Choose Me?</h2>
                     <div class="cta-grid">
                         <div class="cta-item">
-                            <h4>🚀 Impact Immédiat</h4>
-                            <p>Prêt à contribuer dès le premier jour avec expertise ERP prouvée</p>
+                            <h4>🚀 Immediate Impact</h4>
+                            <p>Ready to contribute from day one with proven ERP expertise</p>
                         </div>
                         <div class="cta-item">
-                            <h4>🌍 Pont Culturel</h4>
-                            <p>Professionnel trilingue expérimenté en environnements internationaux</p>
+                            <h4>🌍 Cultural Bridge</h4>
+                            <p>Trilingual professional experienced in international environments</p>
                         </div>
                         <div class="cta-item">
-                            <h4>🔧 Profondeur Technique</h4>
-                            <p>Capacités full-stack combinées à la compréhension des processus métier</p>
+                            <h4>🔧 Technical Depth</h4>
+                            <p>Full-stack capabilities combined with business process understanding</p>
                         </div>
                         <div class="cta-item">
-                            <h4>⚡ Adaptabilité</h4>
-                            <p>Apprenant rapide avec succès démontré dans divers secteurs industriels</p>
+                            <h4>⚡ Adaptability</h4>
+                            <p>Quick learner with demonstrated success across various industry sectors</p>
                         </div>
                     </div>
                     
-                    <div style="margin-top: 40px; padding: 25px; background: rgba(0, 255, 179, 0.1); border-radius: 15px; border: 1px solid var(--neon-green);">
-                        <h3 style="color: var(--neon-green); margin-bottom: 15px;">📍 Disponibilité</h3>
-                        <p><strong>Préavis :</strong> 2 mois • <strong>Relocalisation :</strong> Immédiate après visa</p>
-                        <p><strong>Destinations :</strong> France, Allemagne, Espagne, Pays-Bas, Belgique</p>
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(0, 255, 179, 0.1); border-radius: 12px; border: 1px solid var(--neon-green);">
+                        <h3 style="color: var(--neon-green); margin-bottom: 10px;">📍 Availability</h3>
+                        <p><strong>Notice Period:</strong> 2 months • <strong>Relocation:</strong> Immediate after visa</p>
+                        <p><strong>Target Destinations:</strong> France, Germany, Spain, Netherlands, Belgium</p>
                     </div>
                 </div>
             </div>
@@ -757,20 +679,25 @@
     </div>
 
     <script>
+        // Detect mobile devices
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
         // Loading screen
         window.addEventListener('load', function() {
             setTimeout(() => {
-                document.getElementById('loading').style.opacity = '0';
+                const loading = document.getElementById('loading');
+                loading.style.opacity = '0';
                 setTimeout(() => {
-                    document.getElementById('loading').style.display = 'none';
+                    loading.style.display = 'none';
                 }, 500);
-            }, 1000);
+            }, 800);
         });
 
-        // Scroll animations
+        // Optimized scroll animations
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver(function(entries) {
@@ -786,112 +713,94 @@
             fadeElements.forEach(el => observer.observe(el));
         });
 
-        // Smooth scroll behavior for better UX
-        document.documentElement.style.scrollBehavior = 'smooth';
-
-        // Add interactive hover effects
-        document.querySelectorAll('.card, .contact-item, .skill-card, .project-card').forEach(element => {
-            element.addEventListener('mouseenter', function() {
-                this.style.transform = this.style.transform || '';
-                this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-            });
-        });
-
-        // Dynamic background animation
-        let mouseX = 0;
-        let mouseY = 0;
-
-        document.addEventListener('mousemove', function(e) {
-            mouseX = e.clientX / window.innerWidth;
-            mouseY = e.clientY / window.innerHeight;
+        // Disable animations on mobile for performance
+        if (isMobile) {
+            document.documentElement.style.setProperty('--animation-speed', '0.1s');
             
-            const bg = document.querySelector('body::before');
-            if (bg) {
-                document.documentElement.style.setProperty('--mouse-x', mouseX);
-                document.documentElement.style.setProperty('--mouse-y', mouseY);
-            }
-        });
-
-        // Add typing effect to the name (optional enhancement)
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.textContent = '';
-            function type() {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
+            // Remove complex animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @media (max-width: 768px) {
+                    * {
+                        animation-duration: 0.1s !important;
+                        transition-duration: 0.1s !important;
+                    }
+                    .card:hover,
+                    .contact-item:hover,
+                    .skill-card:hover,
+                    .project-card:hover {
+                        transform: none !important;
+                    }
                 }
-            }
-            type();
+            `;
+            document.head.appendChild(style);
         }
 
-        // Enhanced mobile touch interactions
-        if ('ontouchstart' in window) {
-            document.querySelectorAll('.card, .project-card').forEach(element => {
+        // Touch-friendly interactions
+        if (isTouch) {
+            document.querySelectorAll('.card, .contact-item, .skill-card, .project-card').forEach(element => {
                 element.addEventListener('touchstart', function() {
-                    this.style.transform = 'scale(0.98)';
-                });
+                    this.style.opacity = '0.8';
+                }, { passive: true });
+                
                 element.addEventListener('touchend', function() {
-                    this.style.transform = '';
-                });
+                    this.style.opacity = '';
+                }, { passive: true });
             });
         }
 
-        // Performance optimization for animations
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-        if (prefersReducedMotion.matches) {
-            document.documentElement.style.setProperty('--animation-duration', '0.01s');
-        }
-
-        // Add parallax effect on scroll (subtle)
-        let ticking = false;
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.header');
-            
-            parallaxElements.forEach(element => {
-                const speed = 0.5;
-                const yPos = -(scrolled * speed);
-                element.style.transform = `translateY(${yPos}px)`;
-            });
-            
-            ticking = false;
-        }
-
-        function requestTick() {
-            if (!ticking) {
-                requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        }
-
-        window.addEventListener('scroll', requestTick);
-
-        // Add email click functionality
+        // Optimized contact functionality
         document.addEventListener('click', function(e) {
-            if (e.target.textContent === 'josef.libzar@gmail.com') {
-                window.location.href = 'mailto:josef.libzar@gmail.com?subject=Opportunité Professionnelle&body=Bonjour Youssef,';
-            }
-        });
-
-        // Add phone click functionality
-        document.addEventListener('click', function(e) {
-            if (e.target.textContent === '+212 643 941 291') {
+            const text = e.target.textContent;
+            if (text === 'josef.libzar@gmail.com') {
+                window.location.href = 'mailto:josef.libzar@gmail.com?subject=Professional Opportunity&body=Hello Youssef,';
+            } else if (text === '+212 643 941 291') {
                 window.location.href = 'tel:+212643941291';
             }
         });
 
-        // Initialize everything when DOM is loaded
+        // Performance optimization
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (prefersReducedMotion.matches) {
+            document.documentElement.style.setProperty('--animation-speed', '0.01s');
+        }
+
+        // Throttled scroll handler for mobile
+        let ticking = false;
+        function handleScroll() {
+            if (!ticking && !isMobile) {
+                requestAnimationFrame(() => {
+                    // Only run scroll effects on desktop
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        if (!isMobile) {
+            window.addEventListener('scroll', handleScroll, { passive: true });
+        }
+
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Futuristic CV loaded successfully!');
+            console.log('✅ Mobile-optimized CV loaded successfully!');
             
-            // Add subtle entrance animations with delays
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach((el, index) => {
-                el.style.animationDelay = `${index * 0.1}s`;
-            });
+            // Stagger animations only on desktop
+            if (!isMobile) {
+                const elements = document.querySelectorAll('.fade-in');
+                elements.forEach((el, index) => {
+                    el.style.animationDelay = `${index * 0.1}s`;
+                });
+            }
         });
+
+        // Memory cleanup for mobile
+        if (isMobile) {
+            window.addEventListener('beforeunload', function() {
+                // Clear any intervals/timeouts
+                observer.disconnect();
+            });
+        }
     </script>
 </body>
 </html>
