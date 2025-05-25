@@ -490,7 +490,8 @@
         <!-- Header Section -->
         <header class="header fade-in">
             <div class="profile-image">
-                <img src="1715534813916.jpg" style="width: 24px;">
+                <img src="1715534813916.jpg" alt="Profile Photo" width="200">
+
             </div>
             <h1 class="name">YOUSSEF LIBZAR</h1>
             <p class="title">ERP Functional Consultant | ERP & Enterprise Systems Specialist</p>
@@ -648,7 +649,7 @@
         <section class="section fade-in">
             <div class="cta-section">
                 <div class="cta-content">
-                    <h2 class="cta-title">Why Choose Me?</h2>
+                    <h2 class="cta-title">Why Me?</h2>
                     <div class="cta-grid">
                         <div class="cta-item">
                             <h4>🚀 Immediate Impact</h4>
