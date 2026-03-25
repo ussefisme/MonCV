@@ -1,807 +1,679 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youssef LIBZAR - ERP Functional Consultant</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-primary: #F4FAFF;
-            --primary-blue: #007BFF;
-            --electric-blue: #00D4FF;
-            --text-dark: #002244;
-            --neon-green: #00FFB3;
-            --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.1);
-            --shadow: rgba(0, 123, 255, 0.2);
-            --animation-speed: 0.3s;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Simplified background for mobile performance */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(0, 123, 255, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
-            z-index: -1;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header Section */
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            position: relative;
-            margin-bottom: 30px;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--electric-blue), transparent);
-        }
-
-        .profile-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            background: linear-gradient(45deg, var(--primary-blue), var(--electric-blue));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            font-weight: 600;
-            box-shadow: 0 0 20px var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .name {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, var(--primary-blue), var(--electric-blue), var(--neon-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-
-        .title {
-            font-size: 1.2rem;
-            color: var(--primary-blue);
-            font-weight: 500;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .contact-item {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 123, 255, 0.2);
-            backdrop-filter: blur(5px);
-            transition: transform var(--animation-speed) ease;
-            cursor: pointer;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-3px);
-        }
-
-        /* Section Styling */
-        .section {
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 25px;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::before {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--electric-blue), var(--neon-green));
-            border-radius: 2px;
-        }
-
-        /* Card System */
-        .card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(0, 123, 255, 0.1);
-            backdrop-filter: blur(5px);
-            transition: all var(--animation-speed) ease;
-            position: relative;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px var(--shadow);
-        }
-
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-card {
-            background: linear-gradient(135deg, var(--white) 0%, rgba(0, 123, 255, 0.05) 100%);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-blue);
-            transition: all var(--animation-speed) ease;
-        }
-
-        .skill-card:hover {
-            border-left-color: var(--neon-green);
-            transform: translateX(5px);
-        }
-
-        .skill-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-        }
-
-        .skill-list {
-            color: var(--primary-blue);
-            font-weight: 500;
-        }
-
-        /* Experience Cards */
-        .experience-card {
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .experience-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, var(--primary-blue), var(--electric-blue), var(--neon-green));
-            border-radius: 2px;
-        }
-
-        .job-header {
-            margin-bottom: 15px;
-        }
-
-        .job-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 5px;
-        }
-
-        .company {
-            font-size: 1.1rem;
-            color: var(--primary-blue);
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .date-location {
-            color: var(--electric-blue);
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .achievements {
-            list-style: none;
-        }
-
-        .achievements li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-            transition: all var(--animation-speed) ease;
-        }
-
-        .achievements li::before {
-            content: '▶';
-            position: absolute;
-            left: 0;
-            color: var(--neon-green);
-            font-size: 0.8rem;
-        }
-
-        .achievements li:hover {
-            transform: translateX(5px);
-            color: var(--primary-blue);
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background: linear-gradient(135deg, var(--primary-blue), var(--electric-blue));
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all var(--animation-speed) ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 123, 255, 0.3);
-        }
-
-        .project-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--text-dark), var(--primary-blue));
-            color: white;
-            padding: 40px 25px;
-            border-radius: 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .cta-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-
-        .cta-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .cta-item {
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(0, 255, 179, 0.2);
-            transition: all var(--animation-speed) ease;
-        }
-
-        .cta-item:hover {
-            transform: scale(1.02);
-            border-color: var(--neon-green);
-        }
-
-        /* Mobile Responsiveness - Optimized */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .name {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .card {
-                padding: 20px;
-            }
-
-            .header {
-                padding: 30px 15px;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-
-            .skills-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-title {
-                font-size: 1.8rem;
-            }
-
-            .cta-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* Reduce animations on mobile for performance */
-            .card:hover,
-            .contact-item:hover,
-            .skill-card:hover {
-                transform: none;
-            }
-
-            .achievements li:hover {
-                transform: none;
-            }
-
-            /* Simplify mobile interactions */
-            .card,
-            .contact-item,
-            .skill-card,
-            .project-card {
-                transition: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 10px;
-            }
-
-            .name {
-                font-size: 1.8rem;
-            }
-
-            .profile-image {
-                width: 100px;
-                height: 100px;
-                font-size: 18px;
-            }
-
-            .card {
-                padding: 15px;
-            }
-
-            .section {
-                margin-bottom: 30px;
-            }
-        }
-
-        /* Fade-in animation - simplified for mobile */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Loading Animation */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-primary);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(0, 123, 255, 0.3);
-            border-top: 3px solid var(--primary-blue);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Mobile-specific optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            /* Remove hover effects on touch devices */
-            .card:hover,
-            .contact-item:hover,
-            .skill-card:hover,
-            .project-card:hover,
-            .achievements li:hover {
-                transform: none;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youssef Libzar — ERP Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080b12;
+    --bg2: #0d1117;
+    --bg3: #111620;
+    --surface: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.08);
+    --accent: #4f8ef7;
+    --accent2: #a259ff;
+    --accent3: #00e5c0;
+    --text: #e8edf5;
+    --muted: #6b7a99;
+    --soft: #aab4cc;
+    --grad: linear-gradient(135deg, #4f8ef7, #a259ff);
+    --grad2: linear-gradient(135deg, #a259ff, #00e5c0);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: .4;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6vw; height: 64px;
+    background: rgba(8,11,18,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem;
+    background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-decoration: none; letter-spacing: -.01em;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: .88rem;
+    font-weight: 400; letter-spacing: .02em; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--grad); color: #fff; border: none;
+    padding: .45rem 1.2rem; border-radius: 6px;
+    font-family: 'DM Sans', sans-serif; font-size: .85rem; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: opacity .2s, transform .15s;
+  }
+  .nav-cta:hover { opacity: .85; transform: translateY(-1px); }
+
+  /* Hamburger */
+  .ham {
+    display: none; background: none; border: none;
+    cursor: pointer; padding: .4rem;
+    flex-direction: column; gap: 5px; align-items: center;
+  }
+  .ham span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
+
+  /* Mobile drawer */
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+    background: rgba(8,11,18,0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 6vw 1.6rem;
+    flex-direction: column;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--soft); text-decoration: none; font-size: 1rem;
+    padding: .85rem 0; border-bottom: 1px solid var(--border); transition: color .2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; color: var(--accent); font-weight: 500; }
+  .mobile-menu a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative; min-height: 100svh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 120px 6vw 80px;
+    text-align: center; overflow: hidden;
+  }
+
+  .hero-glow { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(120px); }
+  .glow-blue   { width: 600px; height: 600px; background: rgba(79,142,247,.12); top: -100px; left: -150px; }
+  .glow-purple { width: 500px; height: 500px; background: rgba(162,89,255,.10); bottom: -50px; right: -100px; }
+  .glow-teal   { width: 300px; height: 300px; background: rgba(0,229,192,.07);  top: 40%; left: 55%; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: rgba(79,142,247,.1); border: 1px solid rgba(79,142,247,.25);
+    color: var(--accent); border-radius: 100px; padding: .35rem .9rem;
+    font-size: .78rem; font-weight: 500; letter-spacing: .06em;
+    text-transform: uppercase; margin-bottom: 1.8rem;
+    animation: fadeUp .8s ease both;
+  }
+  .hero-badge span { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse 1.8s infinite; }
+
+  @keyframes pulse { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.4; transform:scale(.8); } }
+
+  h1.hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5.5vw, 4.8rem);
+    font-weight: 800; line-height: 1.08; letter-spacing: -.03em;
+    max-width: 860px; margin: 0 auto 1.4rem;
+    animation: fadeUp .9s .1s ease both;
+  }
+  h1.hero-title .grad-text {
+    background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  .hero-sub {
+    font-size: clamp(.92rem, 1.8vw, 1.2rem);
+    color: var(--soft); max-width: 580px; margin: 0 auto 2.5rem;
+    font-weight: 300; line-height: 1.65;
+    animation: fadeUp 1s .2s ease both;
+  }
+
+  .hero-ctas {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 1s .3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--grad); color: #fff;
+    padding: .8rem 2rem; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 500;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 0 30px rgba(79,142,247,.3);
+    white-space: nowrap; text-align: center;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(79,142,247,.4); }
+
+  .btn-ghost {
+    background: transparent; color: var(--text);
+    padding: .8rem 2rem; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 500;
+    text-decoration: none; border: 1px solid var(--border); cursor: pointer;
+    transition: background .2s, border-color .2s, transform .2s;
+    white-space: nowrap; text-align: center;
+  }
+  .btn-ghost:hover { background: var(--surface); border-color: rgba(255,255,255,.18); transform: translateY(-2px); }
+
+  .hero-proof {
+    display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
+    margin-top: 4rem; animation: fadeUp 1s .45s ease both;
+  }
+  .proof-item { text-align: center; }
+  .proof-num {
+    font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
+    background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+  .proof-label { font-size: .78rem; color: var(--muted); letter-spacing: .04em; margin-top: .3rem; text-transform: uppercase; }
+  .proof-divider { width: 1px; background: var(--border); align-self: stretch; }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 6vw; position: relative; z-index: 1; }
+
+  .section-tag { display: inline-block; font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: .8rem; }
+
+  h2.section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+    font-weight: 700; letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+  }
+
+  .section-desc { color: var(--soft); font-size: 1.05rem; max-width: 560px; font-weight: 300; line-height: 1.7; }
+  .section-split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+
+  /* ── VALUE ── */
+  #value { background: var(--bg2); }
+  .value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3.5rem; }
+
+  .value-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem;
+    transition: border-color .3s, transform .3s;
+    position: relative; overflow: hidden;
+  }
+  .value-card::before { content: ''; position: absolute; inset: 0; background: var(--grad); opacity: 0; transition: opacity .3s; border-radius: 16px; }
+  .value-card:hover { border-color: rgba(79,142,247,.4); transform: translateY(-4px); }
+  .value-card:hover::before { opacity: .04; }
+
+  .value-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem; background: rgba(79,142,247,.1); border: 1px solid rgba(79,142,247,.2); }
+  .value-card h3 { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+  .value-card p  { color: var(--soft); font-size: .9rem; line-height: 1.65; }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--bg); }
+  .exp-timeline { margin-top: 4rem; }
+
+  .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 2.5rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border); }
+  .exp-item:last-child { border-bottom: none; }
+
+  .exp-company { font-family: 'Syne', sans-serif; font-weight: 700; font-size: .95rem; margin-bottom: .3rem; }
+  .exp-period  { font-size: .78rem; color: var(--muted); letter-spacing: .03em; margin-bottom: .6rem; }
+
+  .exp-badge { display: inline-block; padding: .2rem .6rem; border-radius: 100px; font-size: .7rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+  .badge-current { background: rgba(0,229,192,.1); color: var(--accent3); border: 1px solid rgba(0,229,192,.2); }
+  .badge-past    { background: rgba(79,142,247,.1); color: var(--accent);  border: 1px solid rgba(79,142,247,.2); }
+
+  .exp-role    { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: .3rem; }
+  .exp-tagline { color: var(--muted); font-size: .88rem; margin-bottom: 1.3rem; font-style: italic; }
+
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+  .exp-bullets li { display: flex; gap: .75rem; font-size: .92rem; color: var(--soft); line-height: 1.55; }
+  .exp-bullets li::before { content: '→'; color: var(--accent); font-size: .85rem; flex-shrink: 0; margin-top: .05rem; }
+  .exp-bullets strong { color: var(--text); }
+
+  .exp-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.3rem; }
+  .tag { background: rgba(255,255,255,.05); border: 1px solid var(--border); border-radius: 6px; padding: .18rem .55rem; font-size: .72rem; color: var(--muted); letter-spacing: .03em; }
+
+  /* ── CASE STUDIES ── */
+  #projects { background: var(--bg2); }
+  .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
+
+  .case-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; transition: border-color .3s, transform .3s; }
+  .case-card:hover { border-color: rgba(162,89,255,.4); transform: translateY(-5px); }
+
+  .case-header { padding: 1.6rem 1.8rem 1.2rem; border-bottom: 1px solid var(--border); background: linear-gradient(135deg, rgba(79,142,247,.06), rgba(162,89,255,.06)); }
+  .case-industry { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent2); font-weight: 600; margin-bottom: .5rem; }
+  .case-title    { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; line-height: 1.3; }
+
+  .case-body  { padding: 1.6rem 1.8rem; }
+  .case-step  { margin-bottom: 1.1rem; }
+  .case-step-label { font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .3rem; }
+  .lbl-problem { color: #f97316; }
+  .lbl-action  { color: var(--accent); }
+  .lbl-result  { color: var(--accent3); }
+  .case-step p { font-size: .88rem; color: var(--soft); line-height: 1.55; }
+
+  .case-metric { display: flex; gap: .8rem; margin-top: 1.3rem; flex-wrap: wrap; }
+  .metric-pill { background: rgba(0,229,192,.08); border: 1px solid rgba(0,229,192,.2); color: var(--accent3); border-radius: 100px; padding: .25rem .75rem; font-size: .78rem; font-weight: 600; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--bg); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 3.5rem; }
+
+  .skills-group { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; }
+  .skills-group-title { font-family: 'Syne', sans-serif; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1rem; }
+  .sg-erp   { color: #4f8ef7; }
+  .sg-tech  { color: #a259ff; }
+  .sg-qa    { color: #00e5c0; }
+  .sg-tools { color: #f97316; }
+
+  .skills-tags { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .skill-tag { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 7px; padding: .3rem .7rem; font-size: .78rem; color: var(--soft); transition: all .2s; }
+  .skill-tag:hover { background: rgba(79,142,247,.12); border-color: rgba(79,142,247,.3); color: var(--text); }
+
+  /* ── LANGUAGES ── */
+  .lang-row  { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 3rem; }
+  .lang-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 1.6rem; min-width: 130px; flex: 1 1 130px; }
+  .lang-name  { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: .4rem; }
+  .lang-level { display: inline-block; font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: .15rem .5rem; border-radius: 5px; }
+  .level-native { background: rgba(162,89,255,.1); color: var(--accent2); border: 1px solid rgba(162,89,255,.2); }
+  .level-c1     { background: rgba(0,229,192,.1);  color: var(--accent3); border: 1px solid rgba(0,229,192,.2); }
+  .level-b2     { background: rgba(79,142,247,.1);  color: var(--accent);  border: 1px solid rgba(79,142,247,.2); }
+  .level-a2     { background: rgba(251,191,36,.1);  color: #fbbf24;        border: 1px solid rgba(251,191,36,.2); }
+
+  /* ── CTA ── */
+  #contact { background: var(--bg2); text-align: center; }
+
+  .cta-box {
+    max-width: 680px; margin: 0 auto;
+    background: linear-gradient(135deg, rgba(79,142,247,.08), rgba(162,89,255,.08));
+    border: 1px solid rgba(79,142,247,.2); border-radius: 24px;
+    padding: 4rem 3rem; position: relative; overflow: hidden;
+  }
+  .cta-box::before { content: ''; position: absolute; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(79,142,247,.15), transparent); top: -80px; left: -80px; pointer-events: none; }
+  .cta-box h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 800; letter-spacing: -.025em; margin-bottom: .8rem; }
+  .cta-box p  { color: var(--soft); font-size: 1rem; margin-bottom: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+
+  .availability { display: inline-flex; align-items: center; gap: .5rem; background: rgba(0,229,192,.08); border: 1px solid rgba(0,229,192,.2); color: var(--accent3); border-radius: 100px; padding: .35rem .9rem; font-size: .78rem; font-weight: 500; margin-bottom: 2rem; }
+  .availability span { width: 7px; height: 7px; border-radius: 50%; background: var(--accent3); animation: pulse 2s infinite; flex-shrink: 0; }
+
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2rem 6vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: var(--muted); font-size: .82rem; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: var(--muted); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(79,142,247,.4); border-radius: 3px; }
+
+  /* ══════════════════════════════════════
+     TABLET  ≤ 860px
+  ══════════════════════════════════════ */
+  @media (max-width: 860px) {
+    .section-split { grid-template-columns: 1fr; gap: 2rem; }
+    .exp-item      { grid-template-columns: 1fr; gap: 1rem; }
+    .cases-grid    { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .value-grid    { grid-template-columns: 1fr; }
+    .nav-links, .nav-cta { display: none; }
+    .ham           { display: flex; }
+    .proof-divider { display: none; }
+    .hero-proof    { gap: 1.5rem 2.5rem; }
+  }
+
+  /* ══════════════════════════════════════
+     PHONE  ≤ 480px
+  ══════════════════════════════════════ */
+  @media (max-width: 480px) {
+
+    nav     { padding: 0 5vw; }
+    section { padding: 64px 5vw; }
+    #hero   { padding: 96px 5vw 56px; min-height: 100svh; }
+    footer  { flex-direction: column; align-items: flex-start; padding: 1.5rem 5vw; gap: .75rem; }
+
+    /* Hero */
+    h1.hero-title  { font-size: 1.85rem; letter-spacing: -.02em; line-height: 1.12; }
+    .hero-sub      { font-size: .9rem; }
+    .hero-badge    { font-size: .68rem; padding: .28rem .7rem; }
+    .hero-ctas     { flex-direction: column; align-items: stretch; width: 100%; gap: .7rem; }
+    .btn-primary,
+    .btn-ghost     { padding: .85rem 1rem; font-size: .9rem; width: 100%; }
+    .hero-proof    { gap: .9rem 1.6rem; }
+    .proof-num     { font-size: 1.5rem; }
+    .proof-label   { font-size: .66rem; }
+
+    /* Sections */
+    h2.section-title { font-size: 1.5rem; }
+    .section-desc    { font-size: .88rem; }
+
+    /* Value */
+    .value-card    { padding: 1.3rem; }
+    .value-card h3 { font-size: .97rem; }
+    .value-card p  { font-size: .85rem; }
+
+    /* Experience */
+    .exp-item      { padding: 1.5rem 0; gap: .6rem; }
+    .exp-role      { font-size: 1.02rem; }
+    .exp-tagline   { font-size: .81rem; }
+    .exp-bullets li{ font-size: .84rem; }
+    .tag           { font-size: .66rem; }
+
+    /* Case studies */
+    .case-header   { padding: 1.1rem 1.1rem .9rem; }
+    .case-body     { padding: 1.1rem; }
+    .case-title    { font-size: .97rem; }
+    .case-step p   { font-size: .82rem; }
+    .metric-pill   { font-size: .73rem; }
+
+    /* Skills */
+    .skills-grid   { grid-template-columns: 1fr; gap: .9rem; }
+    .skill-tag     { font-size: .74rem; }
+
+    /* Languages — 2 columns on phone */
+    .lang-row      { gap: .6rem; }
+    .lang-card     { padding: .95rem 1rem; min-width: 0; flex: 1 1 calc(50% - .3rem); }
+    .lang-name     { font-size: .9rem; }
+    .lang-level    { font-size: .64rem; }
+
+    /* CTA */
+    .cta-box       { padding: 2rem 1.3rem; border-radius: 14px; }
+    .cta-box h2    { font-size: 1.45rem; }
+    .cta-box p     { font-size: .86rem; }
+    .cta-buttons   { flex-direction: column; align-items: stretch; gap: .7rem; }
+    .cta-buttons .btn-primary { width: 100%; }
+    .availability  { font-size: .7rem; flex-wrap: wrap; justify-content: center; }
+
+    .footer-links  { gap: 1rem; }
+  }
+</style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-overlay" id="loading">
-        <div class="loading-spinner"></div>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <a class="nav-logo" href="#">YL</a>
+  <ul class="nav-links">
+    <li><a href="#value">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Let's talk</a>
+  <button class="ham" id="hamBtn" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#value"      onclick="closeMobile()">About</a>
+  <a href="#experience" onclick="closeMobile()">Experience</a>
+  <a href="#projects"   onclick="closeMobile()">Projects</a>
+  <a href="#skills"     onclick="closeMobile()">Skills</a>
+  <a href="#contact"    onclick="closeMobile()">Let's talk →</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-glow glow-blue"></div>
+  <div class="hero-glow glow-purple"></div>
+  <div class="hero-glow glow-teal"></div>
+
+  <div class="hero-badge"><span></span> Available for opportunities in Europe</div>
+
+  <h1 class="hero-title">
+    I turn <span class="grad-text">complex ERP systems</span><br>into measurable business results.
+  </h1>
+
+  <p class="hero-sub">
+    ERP Functional Consultant specialising in HR &amp; Insurance platforms. I bridge the gap between business needs and technical execution — delivering implementations that actually work.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="#projects" class="btn-primary">View Case Studies</a>
+    <a href="#contact"  class="btn-ghost">Contact Me</a>
+  </div>
+
+  <div class="hero-proof">
+    <div class="proof-item"><div class="proof-num">3+</div><div class="proof-label">Years consulting</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-item"><div class="proof-num">15+</div><div class="proof-label">Clients delivered</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-item"><div class="proof-num">98%</div><div class="proof-label">Satisfaction rate</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-item"><div class="proof-num">2</div><div class="proof-label">Industries: HR + Insurance</div></div>
+  </div>
+</section>
+
+<!-- ── VALUE ── -->
+<section id="value">
+  <div class="section-split">
+    <div class="reveal">
+      <span class="section-tag">What I do</span>
+      <h2 class="section-title">I solve the problems that stall ERP projects.</h2>
+      <p class="section-desc">Most ERP implementations fail not because of the software — but because of poor alignment between business logic, technical constraints, and human processes. I fix that.</p>
+    </div>
+    <div></div>
+  </div>
+  <div class="value-grid reveal">
+    <div class="value-card"><div class="value-icon">⚙️</div><h3>ERP Implementation & Configuration</h3><p>From requirements workshops to go-live. I configure complex ERP modules (HR, Insurance, Payroll) with zero-defect ambition — managing thousands of users and contracts across enterprise-scale deployments.</p></div>
+    <div class="value-card"><div class="value-icon">🔍</div><h3>Functional Analysis & Business Alignment</h3><p>I translate ambiguous stakeholder needs into precise functional specifications. My structured approach reduces back-and-forth cycles by up to 40%, accelerating delivery timelines.</p></div>
+    <div class="value-card"><div class="value-icon">🧪</div><h3>Quality Assurance & Test Engineering</h3><p>Hundreds of functional test cases designed, executed and tracked per project. I maintain system stability through disciplined QA — catching critical bugs before they become client problems.</p></div>
+    <div class="value-card"><div class="value-icon">📊</div><h3>Project Delivery & Stakeholder Management</h3><p>Agile-native (Scrum & Kanban) with hands-on experience coordinating across development, business, and C-level stakeholders. I keep projects moving — and clients satisfied at 95%+ rates.</p></div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <span class="section-tag">Career</span>
+  <h2 class="section-title">Experience</h2>
+  <p class="section-desc">Three years of progressive consulting responsibility — from complex deployments to leading full ERP programs independently.</p>
+
+  <div class="exp-timeline">
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-company">Cleva Solutions</div>
+        <div class="exp-period">Dec 2024 — Present</div>
+        <span class="exp-badge badge-current">Current</span>
+      </div>
+      <div>
+        <div class="exp-role">ERP Engineer — Insurance</div>
+        <div class="exp-tagline">Driving enterprise-scale insurance platform delivery under SCRUM</div>
+        <ul class="exp-bullets">
+          <li><strong>Led requirements workshops</strong> with dozens of stakeholders, translating complex insurance business rules into precise functional specifications.</li>
+          <li><strong>Configured mission-critical ERP modules</strong> managing thousands of contracts and users — zero rollback post-launch.</li>
+          <li><strong>Resolved ~10 critical functional anomalies/week</strong>, maintaining system continuity and preventing delivery delays.</li>
+          <li><strong>Designed and executed hundreds of test cases</strong>, ensuring full compliance before each release cycle.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">ERP Insurance</span><span class="tag">SCRUM</span><span class="tag">Functional Analysis</span><span class="tag">QA</span><span class="tag">Stakeholder Management</span>
+        </div>
+      </div>
     </div>
 
-    <div class="container">
-        <!-- Header Section -->
-        <header class="header fade-in">
-            <div class="profile-image">
-                <img src="1715534813916.jpg" alt="Profile Photo" width="200">
-
-            </div>
-            <h1 class="name">YOUSSEF LIBZAR</h1>
-            <p class="title">ERP Functional Consultant | ERP & Enterprise Systems Specialist</p>
-            
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <strong>📧 Email</strong><br>
-                    josef.libzar@gmail.com
-                </div>
-                <div class="contact-item">
-                    <strong>📱 Phone</strong><br>
-                    +212 643 941 291
-                </div>
-                <div class="contact-item">
-                    <strong>🔗 LinkedIn</strong><br>
-                    <a href="https://www.linkedin.com/in/youssef-libzar-502494228/" style="color: var(--primary-blue);">LinkedIn Profile</a>
-                </div>
-                <div class="contact-item">
-                    <strong>📍 Location</strong><br>
-                    Rabat, Morocco
-                </div>
-            </div>
-
-            <div class="contact-item" style="margin-top: 20px; background: linear-gradient(135deg, var(--neon-green), var(--electric-blue)); color: white; font-weight: 600;">
-                🇪🇺 Seeking EU opportunities with visa sponsorship
-            </div>
-        </header>
-
-        <!-- Profile Summary -->
-        <section class="section fade-in">
-            <h2 class="section-title">Professional Profile</h2>
-            <div class="card">
-                <p style="font-size: 1.1rem; line-height: 1.8;">
-                    <strong>Results-driven ERP Functional Consultant</strong> with <strong>3+ years</strong> of hands-on experience in implementing and optimizing enterprise systems across <strong>HR and Insurance</strong> sectors. Proven track record of delivering complex ERP projects, reducing operational costs, and streamlining business processes for international clients.
-                </p>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section class="section fade-in">
-            <h2 class="section-title">Key Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3 class="skill-title">🔧 ERP Systems</h3>
-                    <p class="skill-list">SAP, Odoo, TeamsRH, MyTeamsRH, Cleva Web/RCP</p>
-                </div>
-                <div class="skill-card">
-                    <h3 class="skill-title">💻 Development</h3>
-                    <p class="skill-list">Java, Spring Boot, Angular, TypeScript, Python, .NET</p>
-                </div>
-                <div class="skill-card">
-                    <h3 class="skill-title">🗄️ Databases</h3>
-                    <p class="skill-list">Oracle, MySQL, SQL, PL/SQL</p>
-                </div>
-                <div class="skill-card">
-                    <h3 class="skill-title">📊 Project Management</h3>
-                    <p class="skill-list">Agile, Scrum, Jira, Confluence</p>
-                </div>
-                <div class="skill-card">
-                    <h3 class="skill-title">🌍 Languages</h3>
-                    <p class="skill-list">French (C1), English (C1), Arabic (Native)</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section class="section fade-in">
-            <h2 class="section-title">Professional Experience</h2>
-            
-            <div class="card experience-card">
-                <div class="job-header">
-                    <h3 class="job-title">ERP/INSURANCE FUNCTIONAL CONSULTANT</h3>
-                    <p class="company">Cleva Solutions | Rabat, Morocco</p>
-                    <p class="date-location">Dec 2024 - Present</p>
-                </div>
-                <ul class="achievements">
-                    <li><strong>Led requirements gathering</strong> for insurance clients, translating business needs into technical specifications</li>
-                    <li><strong>Configured ERP modules</strong> resulting in improved claims processing efficiency</li>
-                    <li><strong>Designed and delivered</strong> user training programs for end-users</li>
-                    <li><strong>Managed incident resolution</strong> with high first-call resolution rate</li>
-                </ul>
-            </div>
-
-            <div class="card experience-card">
-                <div class="job-header">
-                    <h3 class="job-title">HR TECHNO-FUNCTIONAL CONSULTANT</h3>
-                    <p class="company">Cegedim | Rabat, Morocco</p>
-                    <p class="date-location">Feb 2023 - Dec 2024</p>
-                </div>
-                <ul class="achievements">
-                    <li><strong>Collaborated with international clients</strong> to develop functional specifications</li>
-                    <li><strong>Managed user stories</strong> using Jira, ensuring on-time delivery</li>
-                    <li><strong>Executed comprehensive testing</strong> with high bug detection rate</li>
-                    <li><strong>Analyzed and resolved</strong> functional anomalies, maintaining system stability</li>
-                </ul>
-            </div>
-
-            <div class="card experience-card">
-                <div class="job-header">
-                    <h3 class="job-title">FULL STACK ENGINEER (INTERNSHIP)</h3>
-                    <p class="company">Inetum | Rabat, Morocco</p>
-                    <p class="date-location">Apr 2022 - Aug 2022</p>
-                </div>
-                <ul class="achievements">
-                    <li><strong>Designed and developed</strong> a geolocation web application for fleet management</li>
-                    <li><strong>Implemented RESTful APIs</strong> using Spring Boot with real-time tracking</li>
-                    <li><strong>Built responsive frontend</strong> with Angular, improving UX</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section class="section fade-in">
-            <h2 class="section-title">Key Projects & Achievements</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-icon">🏆</div>
-                    <h3><strong>ERP Implementation Success</strong></h3>
-                    <p>Led insurance ERP system configuration, reducing processing time by 20%</p>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">⚡</div>
-                    <h3><strong>Process Optimization</strong></h3>
-                    <p>Streamlined HR workflows for international client, saving 15 hours/week</p>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">✅</div>
-                    <h3><strong>Quality Assurance</strong></h3>
-                    <p>Maintained high accuracy rate in functional testing across enterprise applications</p>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">😊</div>
-                    <h3><strong>Client Satisfaction</strong></h3>
-                    <p>Achieved excellent client satisfaction through effective stakeholder management</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education -->
-        <section class="section fade-in">
-            <h2 class="section-title">Education</h2>
-            <div class="card experience-card">
-                <div class="job-header">
-                    <h3 class="job-title">ENGINEERING DEGREE - MATHEMATICAL & COMPUTER SCIENCES</h3>
-                    <p class="company">Faculty of Sciences and Techniques Mohammedia</p>
-                    <p class="date-location">2020 - 2023</p>
-                </div>
-                <p style="margin-top: 15px;">
-                    <strong>Grade:</strong> Good • <strong>Relevant Courses:</strong> Software Engineering, Database Systems, Project Management, Systems Analysis
-                </p>
-            </div>
-        </section>
-
-        <!-- Call to Action -->
-        <section class="section fade-in">
-            <div class="cta-section">
-                <div class="cta-content">
-                    <h2 class="cta-title">Why Me?</h2>
-                    <div class="cta-grid">
-                        <div class="cta-item">
-                            <h4>🚀 Immediate Impact</h4>
-                            <p>Ready to contribute from day one with proven ERP expertise</p>
-                        </div>
-                        <div class="cta-item">
-                            <h4>🌍 Cultural Bridge</h4>
-                            <p>Trilingual professional experienced in international environments</p>
-                        </div>
-                        <div class="cta-item">
-                            <h4>🔧 Technical Depth</h4>
-                            <p>Full-stack capabilities combined with business process understanding</p>
-                        </div>
-                        <div class="cta-item">
-                            <h4>⚡ Adaptability</h4>
-                            <p>Quick learner with demonstrated success across various industry sectors</p>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 30px; padding: 20px; background: rgba(0, 255, 179, 0.1); border-radius: 12px; border: 1px solid var(--neon-green);">
-                        <h3 style="color: var(--neon-green); margin-bottom: 10px;">📍 Availability</h3>
-                        <p><strong>Notice Period:</strong> 2 months • <strong>Relocation:</strong> Immediate after visa</p>
-                        <p><strong>Target Destinations:</strong> France, Germany, Spain, Netherlands, Belgium</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-company">Cegedim</div>
+        <div class="exp-period">Feb 2023 — Dec 2024</div>
+        <span class="exp-badge badge-past">~2 years</span>
+      </div>
+      <div>
+        <div class="exp-role">Technico-Functional Consultant — HR</div>
+        <div class="exp-tagline">End-to-end HR ERP delivery for 14+ enterprise clients including VIP accounts</div>
+        <ul class="exp-bullets">
+          <li><strong>Delivered a full from-scratch ERP implementation</strong> for a VIP client, achieving a <strong>98% satisfaction score</strong> — a benchmark result in the team.</li>
+          <li><strong>Contributed to functional &amp; technical analysis</strong> across 14 major clients using KANBAN methodology, reducing misalignment risks early in the project lifecycle.</li>
+          <li><strong>Managed a continuous flow of user stories in Jira</strong>, contributing to the fluidity of multiple development sprints simultaneously.</li>
+          <li><strong>Designed hundreds of test scenarios in SQUASH</strong> and produced acceptance test documentation that accelerated client sign-off.</li>
+          <li><strong>Processed 2–3 incident tickets/day</strong> with high first-time resolution — maintaining a <strong>global satisfaction rate of ~95%</strong> across all accounts.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">HR ERP</span><span class="tag">KANBAN</span><span class="tag">Jira</span><span class="tag">SQUASH</span><span class="tag">Client Relations</span><span class="tag">Acceptance Testing</span>
+        </div>
+      </div>
     </div>
 
-    <script>
-        // Detect mobile devices
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-company">Inetum</div>
+        <div class="exp-period">Apr 2022 — Aug 2022</div>
+        <span class="exp-badge badge-past">Internship</span>
+      </div>
+      <div>
+        <div class="exp-role">Full Stack Engineer — Intern</div>
+        <div class="exp-tagline">Built a real-time geolocation platform from concept to deployment</div>
+        <ul class="exp-bullets">
+          <li><strong>Designed and developed a full web application</strong> for real-time mobile unit tracking — featuring live alerts, vehicle monitoring, and scalable architecture for hundreds of users.</li>
+          <li><strong>Handled the full stack</strong>: Java Spring Boot backend, Angular frontend, Oracle database — a complete production-grade delivery within 5 months.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">Java Spring Boot</span><span class="tag">Angular</span><span class="tag">Oracle</span><span class="tag">Full Stack</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Loading screen
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                const loading = document.getElementById('loading');
-                loading.style.opacity = '0';
-                setTimeout(() => {
-                    loading.style.display = 'none';
-                }, 500);
-            }, 800);
-        });
+<!-- ── CASE STUDIES ── -->
+<section id="projects">
+  <span class="section-tag">Case Studies</span>
+  <h2 class="section-title">Impact in action.</h2>
+  <p class="section-desc">Three engagements. Real problems. Measurable outcomes.</p>
 
-        // Optimized scroll animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        };
+  <div class="cases-grid">
+    <div class="case-card reveal">
+      <div class="case-header"><div class="case-industry">HR ERP — Enterprise</div><div class="case-title">From-scratch HR platform for a major VIP client</div></div>
+      <div class="case-body">
+        <div class="case-step"><div class="case-step-label lbl-problem">🔴 Problem</div><p>The client had no existing HR system. Payroll, contracts, and employee records were managed manually — creating compliance risk and massive time loss for the HR team.</p></div>
+        <div class="case-step"><div class="case-step-label lbl-action">🔵 Action</div><p>Led full implementation end-to-end: requirements workshops, functional specification, module configuration, QA, and final acceptance — coordinating cross-functional teams under KANBAN.</p></div>
+        <div class="case-step"><div class="case-step-label lbl-result">🟢 Result</div><p>On-time delivery with zero critical post-launch incidents. Client validated every milestone. Final satisfaction score: <strong>98%</strong>.</p></div>
+        <div class="case-metric"><span class="metric-pill">98% satisfaction</span><span class="metric-pill">0 rollbacks</span><span class="metric-pill">Full scope delivered</span></div>
+      </div>
+    </div>
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+    <div class="case-card reveal">
+      <div class="case-header"><div class="case-industry">Insurance ERP — Scale</div><div class="case-title">Stabilising a high-volume insurance platform under pressure</div></div>
+      <div class="case-body">
+        <div class="case-step"><div class="case-step-label lbl-problem">🔴 Problem</div><p>A complex insurance ERP was generating critical anomalies at high frequency, threatening platform reliability and client confidence ahead of a major go-live.</p></div>
+        <div class="case-step"><div class="case-step-label lbl-action">🔵 Action</div><p>Implemented a structured anomaly triage process: classification, root cause analysis, and escalation protocols. Personally resolved ~10 critical issues/week while maintaining test coverage.</p></div>
+        <div class="case-step"><div class="case-step-label lbl-result">🟢 Result</div><p>Significantly reduced open incident backlog. System stability improved ahead of launch. Operations team reported full confidence in release readiness.</p></div>
+        <div class="case-metric"><span class="metric-pill">~10 bugs/week resolved</span><span class="metric-pill">Pre-launch stability</span><span class="metric-pill">100s of test cases</span></div>
+      </div>
+    </div>
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach(el => observer.observe(el));
-        });
+    <div class="case-card reveal">
+      <div class="case-header"><div class="case-industry">Multi-client — Portfolio</div><div class="case-title">Scaling consulting delivery across 14 simultaneous accounts</div></div>
+      <div class="case-body">
+        <div class="case-step"><div class="case-step-label lbl-problem">🔴 Problem</div><p>Managing functional analysis, QA, and client communication across 14 enterprise accounts simultaneously — without a drop in quality or response time.</p></div>
+        <div class="case-step"><div class="case-step-label lbl-action">🔵 Action</div><p>Structured Jira workflows to manage concurrent user stories, maintained 2–3 ticket resolutions/day with meticulous documentation, and produced final acceptance reports for each project.</p></div>
+        <div class="case-step"><div class="case-step-label lbl-result">🟢 Result</div><p>Maintained a global satisfaction rate of ~95% across all accounts over nearly 2 years — with zero missed SLAs on critical deliverables.</p></div>
+        <div class="case-metric"><span class="metric-pill">14 clients</span><span class="metric-pill">95% global satisfaction</span><span class="metric-pill">~2 years sustained</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Disable animations on mobile for performance
-        if (isMobile) {
-            document.documentElement.style.setProperty('--animation-speed', '0.1s');
-            
-            // Remove complex animations
-            const style = document.createElement('style');
-            style.textContent = `
-                @media (max-width: 768px) {
-                    * {
-                        animation-duration: 0.1s !important;
-                        transition-duration: 0.1s !important;
-                    }
-                    .card:hover,
-                    .contact-item:hover,
-                    .skill-card:hover,
-                    .project-card:hover {
-                        transform: none !important;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-        }
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <span class="section-tag">Expertise</span>
+  <h2 class="section-title">Skills &amp; Tools</h2>
+  <p class="section-desc">Organised by business value — from ERP platforms to delivery frameworks.</p>
 
-        // Touch-friendly interactions
-        if (isTouch) {
-            document.querySelectorAll('.card, .contact-item, .skill-card, .project-card').forEach(element => {
-                element.addEventListener('touchstart', function() {
-                    this.style.opacity = '0.8';
-                }, { passive: true });
-                
-                element.addEventListener('touchend', function() {
-                    this.style.opacity = '';
-                }, { passive: true });
-            });
-        }
+  <div class="skills-grid reveal">
+    <div class="skills-group">
+      <div class="skills-group-title sg-erp">🏢 ERP Platforms</div>
+      <div class="skills-tags"><span class="skill-tag">SAP</span><span class="skill-tag">Odoo</span><span class="skill-tag">TeamsRH</span><span class="skill-tag">MyTeamsRH</span><span class="skill-tag">Cleva Web</span><span class="skill-tag">Cleva RCP</span></div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-group-title sg-tech">💻 Tech Stack</div>
+      <div class="skills-tags"><span class="skill-tag">Java</span><span class="skill-tag">Spring Boot</span><span class="skill-tag">Angular</span><span class="skill-tag">TypeScript</span><span class="skill-tag">Python</span><span class="skill-tag">.NET</span><span class="skill-tag">SQL / Oracle</span><span class="skill-tag">REST / JSON</span><span class="skill-tag">Git</span></div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-group-title sg-qa">🧪 QA &amp; Testing</div>
+      <div class="skills-tags"><span class="skill-tag">SQUASH</span><span class="skill-tag">Postman</span><span class="skill-tag">SoapUI</span><span class="skill-tag">Functional Testing</span><span class="skill-tag">UAT</span><span class="skill-tag">Regression</span></div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-group-title sg-tools">🛠️ Project &amp; Delivery</div>
+      <div class="skills-tags"><span class="skill-tag">Jira</span><span class="skill-tag">Confluence</span><span class="skill-tag">Scrum</span><span class="skill-tag">Kanban</span><span class="skill-tag">Monday</span><span class="skill-tag">Redmine</span><span class="skill-tag">Float</span><span class="skill-tag">UML</span></div>
+    </div>
+  </div>
 
-        // Optimized contact functionality
-        document.addEventListener('click', function(e) {
-            const text = e.target.textContent;
-            if (text === 'josef.libzar@gmail.com') {
-                window.location.href = 'mailto:josef.libzar@gmail.com?subject=Professional Opportunity&body=Hello Youssef,';
-            } else if (text === '+212 643 941 291') {
-                window.location.href = 'tel:+212643941291';
-            }
-        });
+  <div class="lang-row reveal" style="margin-top:3rem;">
+    <div class="lang-card"><div class="lang-name">Arabic</div><span class="lang-level level-native">Native</span></div>
+    <div class="lang-card"><div class="lang-name">French</div><span class="lang-level level-c1">C1 — Proficient</span></div>
+    <div class="lang-card"><div class="lang-name">English</div><span class="lang-level level-b2">B2–C1 — Advanced</span></div>
+    <div class="lang-card"><div class="lang-name">German</div><span class="lang-level level-a2">A2 — Elementary</span></div>
+  </div>
+</section>
 
-        // Performance optimization
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-        if (prefersReducedMotion.matches) {
-            document.documentElement.style.setProperty('--animation-speed', '0.01s');
-        }
+<!-- ── CTA ── -->
+<section id="contact">
+  <div class="cta-box reveal">
+    <div class="availability"><span></span> Open to relocation — France, Germany, Netherlands</div>
+    <h2>Let's build something that works.</h2>
+    <p>If you're scaling an ERP program and need a consultant who delivers — not just documents — let's talk.</p>
+    <div class="cta-buttons">
+      <a href="mailto:Josef.libzar@gmail.com" class="btn-primary">Send me an email</a>
+    </div>
+  </div>
+</section>
 
-        // Throttled scroll handler for mobile
-        let ticking = false;
-        function handleScroll() {
-            if (!ticking && !isMobile) {
-                requestAnimationFrame(() => {
-                    // Only run scroll effects on desktop
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }
+<!-- ── FOOTER ── -->
+<footer>
+  <span>© 2025 Youssef Libzar</span>
+  <div class="footer-links">
+    <a href="mailto:Josef.libzar@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/yousseflibzar" target="_blank">LinkedIn</a>
+  </div>
+</footer>
 
-        if (!isMobile) {
-            window.addEventListener('scroll', handleScroll, { passive: true });
-        }
+<script>
+  // Hamburger
+  const hamBtn     = document.getElementById('hamBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  document.addEventListener('click', (e) => {
+    if (!hamBtn.contains(e.target) && !mobileMenu.contains(e.target))
+      mobileMenu.classList.remove('open');
+  });
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('✅ Mobile-optimized CV loaded successfully!');
-            
-            // Stagger animations only on desktop
-            if (!isMobile) {
-                const elements = document.querySelectorAll('.fade-in');
-                elements.forEach((el, index) => {
-                    el.style.animationDelay = `${index * 0.1}s`;
-                });
-            }
-        });
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Memory cleanup for mobile
-        if (isMobile) {
-            window.addEventListener('beforeunload', function() {
-                // Clear any intervals/timeouts
-                observer.disconnect();
-            });
-        }
-    </script>
+  // Active nav
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : ''; });
+  });
+</script>
 </body>
 </html>
